@@ -1,0 +1,19 @@
+/**/
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #FF9999;
+    display: flex;
+    justify-content: center; /* 子要素を水平方向に中央揃え */
+    align-items: center; /* 子要素を垂直方向に中央揃え */
+}
+
+.music-player{
+    background:#FFDDFF;
+    width: 500px;
+    height: 70%;
+    padding:25px 35px;
+    border-radius: 3%;
+    box-shadow:12px 17px 10px 4px rgba(0, 0, 255, .2);
+}
