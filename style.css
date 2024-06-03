@@ -12,8 +12,35 @@
 .music-player{
     background:#FFDDFF;
     width: 500px;
-    height: 70%;
+    height: 800px;
     padding:25px 35px;
     border-radius: 3%;
     box-shadow:12px 17px 10px 4px rgba(0, 0, 255, .2);
+}
+
+.music-player i {
+    font-size: 35px;
+    margin-bottom: 20px
+}
+
+/** main**/
+
+.main img{
+    display: block;
+    height: 90%;
+    width:90%;
+    margin: 0 auto;
+}
+
+.song-name {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.artist-name {
+    font-size: 1.5rem;
+    text-align: center;
+    margin:0;
 }
