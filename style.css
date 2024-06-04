@@ -1,4 +1,4 @@
-/**/
+/*全体のスタイル*/
 
 .container {
     width: 100%;
@@ -9,6 +9,7 @@
     align-items: center; /* 子要素を垂直方向に中央揃え */
 }
 
+/* music_playerのスタイル*/
 .music-player{
     background:#FFDDFF;
     width: 500px;
@@ -16,6 +17,7 @@
     padding:25px 35px;
     border-radius: 3%;
     box-shadow:12px 17px 10px 4px rgba(0, 0, 255, .2);
+    border: 4px solid rgba(28, 33, 187, 0.2);
 }
 
 .music-player i {
@@ -23,13 +25,15 @@
     margin-bottom: 20px
 }
 
-/** main**/
+/** mainのスタイル**/
 
 .main img{
     display: block;
-    height: 90%;
-    width:90%;
+    height: 80%;
+    width:80%;
     margin: 0 auto;
+    border-radius: 3%;
+    box-shadow:10px 10px 10px 4px rgba(0, 0, 255, .2);
 }
 
 .song-name {
@@ -43,4 +47,69 @@
     font-size: 1.5rem;
     text-align: center;
     margin:0;
+}
+
+
+/*music_barのスタイル*/
+.music-bars{
+    width: 80%;
+    display: flex;
+}
+.two-bars {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.times {
+    justify-content: space-between;
+}
+#range{
+    margin: 0 auto;
+    width: 70%;
+}
+
+/*controleのスタイル*/
+.controle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.fa-solid.fa-play{
+    padding-top: 2px;
+    font-size: 29px;
+}
+
+#repeat, #shaffle{
+    font-size: 30px;
+}
+
+.center_button{
+    display: flex;
+    align-items: flex-start;
+    font-size: 50px;
+}
+#start_pause {
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+#repeat {
+    margin-top: 4px;
+    opacity: 0.5;
+}
+
+#repeat-on{
+    margin-top: 4px;
+    opacity: 1;
+    font-size: 30px;
+}
+
+#shaffle {
+    opacity: 0.5;
+}
+
+#shafflt-on{
+    opacity: 1;
 }
