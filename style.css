@@ -54,26 +54,29 @@
 .music-bars{
     width: 80%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
 }
 .two-bars {
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
+    
 }
 
 .times {
+    display: flex;
     justify-content: space-between;
 }
 #range{
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
+    text-align: center;
 }
 
 /*controleのスタイル*/
 .controle {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .fa-solid.fa-play{
