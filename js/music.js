@@ -2,10 +2,37 @@
 
 const volume = document.querySelector('#volume');
 const audio = document.querySelector('#audio')
+const current_Time = document.querySelector('#current-time')
+const total_Time = document.querySelector('#total-time')
 const start_pause = document.querySelector('#start_pause');
 const stop = document.querySelector('#stop');
 const repeat = document.querySelector('#repeat');
 const range = document.querySelector('#range');
+
+//**rangeとaudioの連動 */
+audio.addEventListener('canplaythrough', function(){
+    range.max = audio.duration;
+    console.log(range.max);
+    // range.value = audio.currentTime;
+})
+
+audio.addEventListener('timeupdate', function(){
+    range.value = audio.currentTime;
+
+    current_Time.textContent = formatTime(audio.currentTime);
+
+    total_Time.textContent = formatTime(audio.duration);
+});
+
+function formatTime(time){
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+range.addEventListener('input', function(){
+    audio.currentTime = range.value;
+});
 
 /**ミュート機能 */
 volume.addEventListener('click', function(){
