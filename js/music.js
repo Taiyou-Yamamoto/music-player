@@ -1,13 +1,37 @@
-// import {songs} from "./song";
+import { songs } from './song.js';
 
 const volume = document.querySelector('#volume');
-const audio = document.querySelector('#audio')
+const audio = document.querySelector('#audio');
+
+/* 音楽のタイトル*/
+const songName = document.querySelector('.song-name');
+/* 作曲者 */
+const artist = document.querySelector('.artist-name');
+/*画像 */
+const image = document.querySelector('#song-image');
+
 const current_Time = document.querySelector('#current-time')
 const total_Time = document.querySelector('#total-time')
 const start_pause = document.querySelector('#start_pause');
 const stop = document.querySelector('#stop');
 const repeat = document.querySelector('#repeat');
 const range = document.querySelector('#range');
+
+/**音楽読み込み */
+const currentIndex =  2;
+
+function loadSong(index){
+    const song = songs[index];
+    songName.textContent = song.title;
+    artist.textContent = song.artist;
+    image.src = song.image;
+    audio.src = song.path
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadSong(currentIndex);
+});
+
 
 //**rangeとaudioの連動 */
 audio.addEventListener('canplaythrough', function(){
@@ -35,14 +59,16 @@ range.addEventListener('input', function(){
 });
 
 /**ミュート機能 */
+
+
+
 volume.addEventListener('click', function(){
-    if(audio.volume > 0){
-        previousVolume = audio.volume;
-        audio.volume = audio.muted;
+    if(!audio.muted){
+        audio.muted = true;
         volume.classList.remove("fa-volume-high");
         volume.classList.add("fa-volume-xmark");
     } else {
-        audio.volume = previousVolume;
+        audio.muted = false;
         volume.classList.remove("fa-volume-xmark");
         volume.classList.add("fa-volume-high");
     }
