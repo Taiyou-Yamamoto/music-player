@@ -17,8 +17,11 @@ const stop = document.querySelector('#stop');
 const repeat = document.querySelector('#repeat');
 const range = document.querySelector('#range');
 
+const backward = document.querySelector('#backward');
+const forward = document.querySelector('#forward');
+
 /**音楽読み込み */
-const currentIndex =  2;
+const currentIndex = 0;
 
 function loadSong(index){
     const song = songs[index];
@@ -36,7 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
 //**rangeとaudioの連動 */
 audio.addEventListener('canplaythrough', function(){
     range.max = audio.duration;
-    console.log(range.max);
+    
+    current_Time.textContent = formatTime(audio.currentTime);
+
+    total_Time.textContent = formatTime(audio.duration);
     // range.value = audio.currentTime;
 })
 
@@ -85,6 +91,20 @@ start_pause.addEventListener('click', function(){
         start_pause.classList.remove("fa-pause");
         start_pause.classList.add("fa-play");
     }
+});
+
+/** 前の曲に戻る */
+backward.addEventListener('click', function(){
+    currentIndex =  songs.length - 1;
+    loadSong(currentIndex);
+    audio.play();
+});
+
+/** 次の曲に進む */
+forward.addEventListener('click', function(){
+    currentIndex = (currentIndex + 1) % songs.length;
+    loadSong(currentIndex);
+    audio.play();
 });
 
 /**ループ処理 */
