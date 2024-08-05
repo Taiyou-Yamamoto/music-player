@@ -68,7 +68,7 @@ range.addEventListener('input', function () {
 
 // 曲の終了時、次の曲へ
 audio.addEventListener('ended', function () {
-  if ((shuffle.id = 'shuffle-on')) {
+  if (shuffle.id === 'shuffle-on') {
     // リピートがオンの場合、現在の曲を再度再生
     currentIndex = getRandom(songs.length);
   } else if (repeat.id === 'repeat-on') {
@@ -110,7 +110,7 @@ start_pause.addEventListener('click', function () {
 
 /** 前の曲に戻る */
 backward.addEventListener('click', function () {
-  if ((shuffle.id = 'shuffle-on')) {
+  if (shuffle.id === 'shuffle-on') {
     currentIndex = getRandom(songs.length);
   } else {
     currentIndex = (currentIndex - 1 + songs.length) % songs.length;
@@ -122,7 +122,7 @@ backward.addEventListener('click', function () {
 
 /** 次の曲に進む */
 forward.addEventListener('click', function () {
-  if ((shuffle.id = 'shuffle-on')) {
+  if (shuffle.id === 'shuffle-on') {
     currentIndex = getRandom(songs.length);
   } else {
     currentIndex = (currentIndex + 1) % songs.length;
