@@ -23,6 +23,7 @@ const forward = document.querySelector('#forward');
 
 /**音楽読み込み */
 let currentIndex = 0;
+let shuffleIndex = 0;
 
 function loadSong(index) {
   const song = songs[index];
@@ -67,14 +68,17 @@ range.addEventListener('input', function () {
 
 // 曲の終了時、次の曲へ
 audio.addEventListener('ended', function () {
-  if (repeat.id === 'repeat-on') {
+  if ((shuffle.id = 'shuffle-on')) {
     // リピートがオンの場合、現在の曲を再度再生
+    currentIndex = getRandom(songs.length);
+  } else if (repeat.id === 'repeat-on') {
     audio.play();
+    return;
   } else {
     currentIndex = (currentIndex + 1) % songs.length;
-    loadSong(currentIndex);
-    audio.play();
   }
+  loadSong(currentIndex);
+  audio.play();
 });
 
 /**ミュート機能 */
@@ -106,14 +110,23 @@ start_pause.addEventListener('click', function () {
 
 /** 前の曲に戻る */
 backward.addEventListener('click', function () {
-  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+  if ((shuffle.id = 'shuffle-on')) {
+    currentIndex = getRandom(songs.length);
+  } else {
+    currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+  }
+
   loadSong(currentIndex);
   audio.play();
 });
 
 /** 次の曲に進む */
 forward.addEventListener('click', function () {
-  currentIndex = (currentIndex + 1) % songs.length;
+  if ((shuffle.id = 'shuffle-on')) {
+    currentIndex = getRandom(songs.length);
+  } else {
+    currentIndex = (currentIndex + 1) % songs.length;
+  }
   loadSong(currentIndex);
   audio.play();
 });
@@ -132,7 +145,13 @@ repeat.addEventListener('click', function () {
 shuffle.addEventListener('click', function () {
   if (shuffle.id == 'shuffle') {
     shuffle.id = 'shuffle-on';
+    // let shuffleIndex = getRandom(songs.length);
   } else {
     shuffle.id = 'shuffle';
   }
 });
+
+//  ランダム関数
+function getRandom(max) {
+  return Math.floor(Math.random() * max);
+}
